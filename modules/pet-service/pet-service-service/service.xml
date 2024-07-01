@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds"
+				 package-path="com.dogoo.sample.pet.service"
+				 auto-namespace-tables="false">
+	<author>khoavu</author>
+	<namespace>DG_PET</namespace>
+
+	<entity local-service="true"
+			name="PetEntry"
+			table="DG_PETENTRY"
+			remote-service="false"
+			external-reference-code="true"
+			uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="petId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<column name="creatorId" type="long" />
+		<column name="customerId" type="long" />
+
+		<!-- Other fields -->
+
+		<column name="name" type="String" />
+		<column name="description" type="String" />
+		<column name="brief" type="String" />
+		<column name="gender" type="int" />
+		<column name="vaccine" type="boolean" />
+		<column name="weight" type="double" />
+		<column name="birthOfDate" type="Date" />
+		<column name="status" type="String" />
+		<column name="statusDate" type="Date" />
+		<column name="animalGroupId" type="long" />
+
+		<column name="animalTags" type="Collection" entity="AnimalTagEntry" mapping-table="DG_Pets_AnimalTags"/>
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="C_V" return-type="Collection">
+			<finder-column name="customerId"/>
+			<finder-column name="vaccine"/>
+		</finder>
+
+		<finder name="A_G" return-type="Collection">
+			<finder-column name="animalGroupId" />
+		</finder>
+
+		<finder name="C_N" return-type="Collection">
+			<finder-column name="customerId" />
+			<finder-column name="name" />
+		</finder>
+
+		<!-- References -->
+
+		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
+	</entity>
+
+	<entity local-service="true"
+			name="AnimalGroupEntry"
+			table="DG_ANIMALGROUP"
+			remote-service="false"
+			external-reference-code="true"
+			uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="animalGroupId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<column name="creatorId" type="long" />
+		<column name="customerId" type="long" />
+
+		<!-- Other fields -->
+
+		<column name="name" type="String" />
+		<column name="description" type="String" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="G_" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+
+		<finder name="C_N" return-type="Collection">
+			<finder-column name="customerId" />
+			<finder-column name="name" />
+		</finder>
+
+	</entity>
+
+	<entity local-service="true"
+			name="AnimalTagEntry"
+			table="DG_ANIMALTAG"
+			remote-service="false"
+			external-reference-code="true"
+			uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="animalTagId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<column name="creatorId" type="long" />
+		<column name="customerId" type="long" />
+
+		<!-- Other fields -->
+
+		<column name="name" type="String" />
+		<column name="description" type="String" />
+		<column name="status" type="String" />
+		<column name="statusDate" type="Date" />
+
+		<column name="pets" type="Collection" entity="PetEntry" mapping-table="DG_Pets_AnimalTags"/>
+		<column name="dogs" type="Collection" entity="DogEntry" mapping-table="DG_Dogs_AnimalTags"/>
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="G_" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+
+		<finder name="C_N" return-type="Collection">
+			<finder-column name="customerId" />
+			<finder-column name="name" />
+		</finder>
+
+	</entity>
+
+	<entity local-service="true"
+			name="DogEntry"
+			table="DG_DOG"
+			remote-service="false"
+			external-reference-code="true"
+			uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="dogId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<column name="creatorId" type="long" />
+		<column name="customerId" type="long" />
+
+		<!-- Other fields -->
+
+		<column name="name" type="String" />
+		<column name="title" type="String" />
+		<column name="weight" type="double" />
+		<column name="color" type="String" />
+		<column name="status" type="String" />
+		<column name="statusDate" type="Date" />
+		<column name="animalGroupId" type="long" />
+
+		<column name="animalTags" type="Collection" entity="AnimalTagEntry" mapping-table="DG_Dogs_AnimalTags"/>
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="G_" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+
+		<finder name="C_N" return-type="Collection">
+			<finder-column name="customerId" />
+			<finder-column name="name" />
+		</finder>
+
+	</entity>
+
+</service-builder>

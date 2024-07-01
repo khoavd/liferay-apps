@@ -1,0 +1,1 @@
+create index IX_5BCE3FF2 on DG_UGS_CAT (uuid_[$COLUMN_LENGTH:75$]);

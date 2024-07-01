@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app: liferay
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 550m
+    ingress.kubernetes.io/rewrite-target: /
+  name: liferay-ingress
+  namespace: env-stg
+spec:
+  rules:
+    - host: stg-apis.dogoo.vn
+      http:
+        paths:
+          - backend:
+              service:
+                name: green-liferay-internal-http
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app: liferay
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 550m
+    ingress.kubernetes.io/rewrite-target: /
+  name: liferay-login-ingress
+  namespace: env-stg
+spec:
+  rules:
+    - host: login-stg-apis.dogoo.vn
+      http:
+        paths:
+          - backend:
+              service:
+                name: green-liferay-internal-http
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix

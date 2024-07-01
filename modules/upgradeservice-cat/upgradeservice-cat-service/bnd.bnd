@@ -1,0 +1,6 @@
+Bundle-Name: upgradeservice-cat-service
+Bundle-SymbolicName: com.dogoo.poc.upgradeservice.cat.service.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.1.0
+Liferay-Service: true
+-dsannotations-options: inherit

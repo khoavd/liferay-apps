@@ -1,0 +1,10 @@
+Bundle-Name: animal-service-api
+Bundle-SymbolicName: com.dogoo.sample.animal.service.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.dogoo.sample.animal.service.exception,\
+	com.dogoo.sample.animal.service.model,\
+	com.dogoo.sample.animal.service.service,\
+	com.dogoo.sample.animal.service.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../animal-service-service/service.xml

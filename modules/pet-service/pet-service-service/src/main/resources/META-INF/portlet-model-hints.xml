@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.dogoo.sample.pet.service.model.AnimalGroupEntry">
+		<field name="uuid" type="String" />
+		<field name="externalReferenceCode" type="String" />
+		<field name="animalGroupId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="creatorId" type="long" />
+		<field name="customerId" type="long" />
+		<field name="name" type="String" />
+		<field name="description" type="String" />
+	</model>
+	<model name="com.dogoo.sample.pet.service.model.AnimalTagEntry">
+		<field name="uuid" type="String" />
+		<field name="externalReferenceCode" type="String" />
+		<field name="animalTagId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="creatorId" type="long" />
+		<field name="customerId" type="long" />
+		<field name="name" type="String" />
+		<field name="description" type="String" />
+		<field name="status" type="String" />
+		<field name="statusDate" type="Date" />
+	</model>
+	<model name="com.dogoo.sample.pet.service.model.DogEntry">
+		<field name="uuid" type="String" />
+		<field name="externalReferenceCode" type="String" />
+		<field name="dogId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="creatorId" type="long" />
+		<field name="customerId" type="long" />
+		<field name="name" type="String" />
+		<field name="title" type="String" />
+		<field name="weight" type="double" />
+		<field name="color" type="String" />
+		<field name="status" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="animalGroupId" type="long" />
+	</model>
+	<model name="com.dogoo.sample.pet.service.model.PetEntry">
+		<field name="uuid" type="String" />
+		<field name="externalReferenceCode" type="String" />
+		<field name="petId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="creatorId" type="long" />
+		<field name="customerId" type="long" />
+		<field name="name" type="String" />
+		<field name="description" type="String" />
+		<field name="brief" type="String" />
+		<field name="gender" type="int" />
+		<field name="vaccine" type="boolean" />
+		<field name="weight" type="double" />
+		<field name="birthOfDate" type="Date" />
+		<field name="status" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="animalGroupId" type="long" />
+	</model>
+</model-hints>

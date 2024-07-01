@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.dogoo.poc.upgradeservice.cat.service">
+	<namespace>SAMP_CAT</namespace>
+
+	<entity local-service="true"
+			table="DG_UGS_CAT"
+			name="CatEntry"
+			remote-service="false"
+			uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="catId" db-name="ID" primary="true" type="long" />
+
+		<!-- Other fields -->
+
+		<column name="name" db-name="NAME" type="String" />
+		<column name="gender" db-name="GENDER" type="boolean" />
+<!--		<column name="type" db-name="TYPE" type="int" />-->
+		<column name="dob" db-name="DOB" type="Date" />
+		<column name="category" db-name="cate" type="long" />
+
+	</entity>
+
+</service-builder>

@@ -1,0 +1,10 @@
+apiDir: "../pet-rest-api/src/main/java"
+apiPackagePath: "com.dogoo.sample.pet.rest"
+application:
+    baseURI: "/dogoo/pet-rest"
+    className: "PetRestApplication"
+    name: "DoGoo.PetRest"
+author: "khoavu"
+generateGraphQL: false
+#clientDir: "../pet-rest-client/src/main/java"
+#testDir: "../pet-rest-test/src/testIntegration/java"

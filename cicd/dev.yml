@@ -1,0 +1,8 @@
+config:
+  namespace: env-dev
+  podName: liferay
+  tarFile: deploy.tar.gz
+  deployDir: /opt/liferay/deploy
+  deployTempDir: /mnt/liferay/deploy_temp
+  timesleep: 10
+  host: 10.8.0.5

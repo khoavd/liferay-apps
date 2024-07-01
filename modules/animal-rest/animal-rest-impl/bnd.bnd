@@ -1,0 +1,3 @@
+Bundle-Name: animal-rest-impl
+Bundle-SymbolicName: com.dogoo.sample.animal.rest.impl
+Bundle-Version: 1.0.0

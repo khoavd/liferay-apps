@@ -1,0 +1,1588 @@
+components:
+    schemas:
+        ExceptionType:
+            description: Exception Type
+            properties:
+                status:
+                    enum: [ BadRequest, Auth, Resource ]
+        Pet:
+            description: Pet model
+            properties:
+                id:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                externalReferenceCode:
+                    readOnly: true
+                    type: string
+                name:
+                    type: string
+                description:
+                    type: string
+                nodeName:
+                    type: string
+                brief:
+                    type: string
+                gender:
+                    type: integer
+                    format: int64
+                vaccine:
+                    type: boolean
+                weight:
+                    type: integer
+                    format: int64
+                    example: 7.5
+                birthOfDate:
+                    type: string
+                    format: date
+                animalGroup:
+                    allOf:
+                        - $ref: "#/components/schemas/AnimalGroup"
+                    description:
+                        The group's pet.
+                    readOnly: true
+                animalTags:
+                    description:
+                        A list of the tag's pets.
+                    items:
+                        $ref: "#/components/schemas/AnimalTag"
+                    readOnly: true
+                    type: array
+                status:
+                    enum: [ pending, reject, approved, trashed ]
+                    readOnly: true
+                statusDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                createdDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                animalGroupId:
+                    format: int64
+                    type: integer
+                animalTagIds:
+                    items:
+                        format: int64
+                        type: integer
+                    type: array
+        PetApproval:
+            description: Pet model
+            properties:
+                id:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                externalReferenceCode:
+                    readOnly: true
+                    type: string
+                name:
+                    type: string
+                    readOnly: true
+                description:
+                    type: string
+                    readOnly: true
+                brief:
+                    type: string
+                    readOnly: true
+                gender:
+                    type: integer
+                    format: int64
+                    readOnly: true
+                vaccine:
+                    type: boolean
+                    readOnly: true
+                weight:
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    example: 7.5
+                birthOfDate:
+                    type: string
+                    format: date
+                    readOnly: true
+                animalGroupNew:
+                    allOf:
+                        - $ref: "#/components/schemas/AnimalGroup"
+                    description:
+                        The group's pet.
+                    readOnly: true
+                animalTags:
+                    description:
+                        A list of the tag's pets.
+                    items:
+                        $ref: "#/components/schemas/AnimalTag"
+                    readOnly: true
+                    type: array
+                status:
+                    enum: [ pending, reject, approved, trashed ]
+                statusDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                createdDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+        AnimalGroup:
+            description: Animal Tag
+            properties:
+                id:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                externalReferenceCode:
+                    readOnly: true
+                    type: string
+                name:
+                    type: string
+                description:
+                    type: string
+                createdDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+        AnimalTag:
+            description: Animal Tag
+            properties:
+                id:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                externalReferenceCode:
+                    readOnly: true
+                    type: string
+                name:
+                    type: string
+                description:
+                    type: string
+                status:
+                    enum: [ pending, reject, approved, trashed ]
+                    readOnly: true
+                statusDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                createdDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+        AnimalTagApproved:
+            description: Animal Tag
+            properties:
+                id:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                externalReferenceCode:
+                    readOnly: true
+                    type: string
+                name:
+                    type: string
+                    readOnly: true
+                description:
+                    type: string
+                    readOnly: true
+                status:
+                    enum: [ pending, reject, approved, trashed ]
+                statusDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                createdDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+        Dog:
+            description: Dog model
+            properties:
+                id:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                externalReferenceCode:
+                    readOnly: true
+                    type: string
+                name:
+                    type: string
+                title:
+                    type: string
+                weight:
+                    type: integer
+                    format: int64
+                    example: 7.5
+                color:
+                    type: string
+                animalGroup:
+                    allOf:
+                        - $ref: "#/components/schemas/AnimalGroup"
+                    description:
+                        The group's dog.
+                    readOnly: true
+                animalTags:
+                    description:
+                        A list of the tag's dogs.
+                    items:
+                        $ref: "#/components/schemas/AnimalTag"
+                    readOnly: true
+                    type: array
+                status:
+                    enum: [ pending, reject, approved, trashed ]
+                    readOnly: true
+                statusDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                createdDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                animalGroupId:
+                    format: int64
+                    type: integer
+                animalTagNames:
+                    items:
+                        type: string
+                    type: array
+        DogApproval:
+            description:  Dog model
+            properties:
+                id:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                externalReferenceCode:
+                    readOnly: true
+                    type: string
+                name:
+                    type: string
+                    readOnly: true
+                title:
+                    type: string
+                    readOnly: true
+                weight:
+                    type: integer
+                    format: int64
+                    readOnly: true
+                    example: 7.5
+                color:
+                    type: string
+                    readOnly: true
+                animalGroupNew:
+                    allOf:
+                        - $ref: "#/components/schemas/AnimalGroup"
+                    description:
+                        The group's dog.
+                    readOnly: true
+                animalTags:
+                    description:
+                        A list of the tag's dogs.
+                    items:
+                        $ref: "#/components/schemas/AnimalTag"
+                    readOnly: true
+                    type: array
+                status:
+                    enum: [ pending, reject, approved, trashed ]
+                statusDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                createdDate:
+                    type: string
+                    format: date-time
+                    readOnly: true
+info:
+    description: "PetRest REST API"
+    license:
+        name: "Apache 2.0"
+        url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    title: "Dogoo PetRest Sample"
+    version: v2.0
+openapi: 3.0.1
+
+paths:
+    "/pets":
+        get:
+            tags: ["Pet"]
+            description:
+                Retrieves the pet. Results can be paginated, filtered, searched, and sorted.
+            operationId: getPetsPage
+            parameters:
+                - in: query
+                  name: filter
+                  schema:
+                      type: string
+                - in: query
+                  name: page
+                  schema:
+                      type: integer
+                - in: query
+                  name: pageSize
+                  schema:
+                      type: integer
+                - in: query
+                  name: search
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description: The data returned
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Pet"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Pet"
+                                type: array
+        post:
+            tags: ["Pet"]
+            description: Create new a Pet
+            operationId: postPet
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Pet"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Pet"
+            responses:
+                201:
+                    description:
+                        "Create a Pet"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+    "/pets/{petId}":
+        put:
+            tags: ["Pet"]
+            description: Update a Pet
+            operationId: putPet
+            parameters:
+                - in: path
+                  name: petId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Pet"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Pet"
+            responses:
+                200:
+                    description:
+                        "Update a Pet"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+        get:
+            tags: ["Pet"]
+            description: Get a Pet
+            operationId: getPet
+            parameters:
+                - in: path
+                  name: petId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                200:
+                    description:
+                        "Get detail a Pet"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+        delete:
+            tags: ["Pet"]
+            description: Delete a Pet
+            operationId: deletePet
+            parameters:
+                - in: path
+                  name: petId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                204:
+                    description:
+                        "Delete a Pet"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+
+    "/pets/by-external-reference-code/{externalReferenceCode}":
+        put:
+            tags: ["Pet"]
+            description: Update a Pet by externalReferenceCode
+            operationId: putPetByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Pet"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Pet"
+            responses:
+                200:
+                    description:
+                        "Update a Pet"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+        get:
+            tags: ["Pet"]
+            description: Get a Pet by externalReferenceCode
+            operationId: getPetByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description:
+                        "Get a Pet"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Pet"
+        delete:
+            tags: ["Pet"]
+            description: Delete a Pet by externalReferenceCode
+            operationId: deletePetByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                204:
+                    description:
+                        "Delete a Pet"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+
+    "/pets/{petId}/approval":
+        put:
+            tags: ["Pet"]
+            description: Approval a Pet
+            operationId: putPetApproval
+            parameters:
+                - in: path
+                  name: petId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/PetApproval"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/PetApproval"
+            responses:
+                200:
+                    description:
+                        "Update a Pet"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PetApproval"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/PetApproval"
+
+    "/pets/by-external-reference-code/{externalReferenceCode}/approval":
+        put:
+            tags: ["Pet"]
+            description: Approval by externalReferenceCode
+            operationId: putPetApprovalByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/PetApproval"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/PetApproval"
+            responses:
+                200:
+                    description:
+                        "Update a Pet"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/PetApproval"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/PetApproval"
+    "/groups/{groupId}/pets":
+        get:
+            tags: ["Pet"]
+            description:
+                Retrieves the group's pets. Results can be paginated, filtered, searched, and
+                sorted.
+            operationId: getGroupPetsPage
+            parameters:
+                - in: path
+                  name: groupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - in: query
+                  name: filter
+                  schema:
+                      type: string
+                - in: query
+                  name: page
+                  schema:
+                      type: integer
+                - in: query
+                  name: pageSize
+                  schema:
+                      type: integer
+                - in: query
+                  name: search
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description:
+                        "Pet in group"
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Pet"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Pet"
+                                type: array
+        delete:
+            tags: ["Pet"]
+            description:
+                Remove all pets in a group
+            operationId: deleteGroupPets
+            parameters:
+                - in: path
+                  name: groupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            items:
+                                format: int64
+                                type: integer
+                            type: array
+                    application/xml:
+                        schema:
+                            items:
+                                format: int64
+                                type: integer
+                            type: array
+                # @review
+                description:
+                    An array of petIds to remove from group
+            responses:
+                204:
+                    description:
+                        "Pet in group"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+        post:
+            tags: ["Pet"]
+            description:
+                Add a list of pets to the group
+            operationId: postGroupPets
+            parameters:
+                - in: path
+                  name: groupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            items:
+                                format: int64
+                                type: integer
+                            type: array
+                    application/xml:
+                        schema:
+                            items:
+                                format: int64
+                                type: integer
+                            type: array
+                # @review
+                description:
+                    An array of petIds to add to the group
+            responses:
+                200:
+                    description:
+                        "Pet in group"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+    "/groups/{groupId}/pets/by-external-reference-code":
+        delete:
+            tags: ["Pet"]
+            description:
+                Remove all pets in a group
+            operationId: deleteGroupPetsByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: groupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            items:
+                                type: string
+                            type: array
+                    application/xml:
+                        schema:
+                            items:
+                                type: string
+                            type: array
+                # @review
+                description:
+                    An array of extRefCode's pet to remove from group
+            responses:
+                204:
+                    description:
+                        "Remove in group"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+        post:
+            tags: ["Pet"]
+            description:
+                Add a list of pets to the group
+            operationId: postGroupPetsByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: groupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            items:
+                                type: string
+                            type: array
+                    application/xml:
+                        schema:
+                            items:
+                                type: string
+                            type: array
+                # @review
+                description:
+                    An array of extRefCode's pet to remove from group
+            responses:
+                200:
+                    description:
+                        "Pet in group"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+
+    "/groups/move-pets/{sourceGroupId}/{targetGroupId}":
+        patch:
+            tags: ["Pet"]
+            description: Move pets to other Group
+            operationId: moveGroupMovePets
+            parameters:
+                - in: path
+                  name: sourceGroupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - in: path
+                  name: targetGroupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            items:
+                                format: int64
+                                type: integer
+                            example: [
+                                1000,
+                                1001
+                            ]
+                            type: array
+                    application/xml:
+                        schema:
+                            items:
+                                format: int64
+                                type: integer
+                            type: array
+                # @review
+                description:
+                    An array of petIds to move from the source group to the target group
+            responses:
+                200:
+                    description:
+                        "Move pets"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+    "/groups/move-pets/{sourceGroupId}/{targetGroupId}/by-external-reference-code":
+        patch:
+            tags: ["Pet"]
+            description: Move pets to other Group by External reference code
+            operationId: moveGroupMovePetsByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: sourceGroupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - in: path
+                  name: targetGroupId
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            items:
+                                type: string
+                            type: array
+                            example: ["66f8d54b-80f3-4579-b0fd-c4a96ed052fe",
+                                      "2bddc611-ec5d-45a5-a243-c4e6f6811895"
+                            ]
+                    application/xml:
+                        schema:
+                            items:
+                                type: string
+                            type: array
+                # @review
+                description:
+                    An array of petIds to move from the source group to the target group
+            responses:
+                200:
+                    description:
+                        "Move pets"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+    "/groups":
+        get:
+            tags: ["AnimalGroup"]
+            description:
+                Retrieves the animal groups. Results can be paginated, filtered, searched, and sorted.
+            operationId: getAnimalGroupsPage
+            parameters:
+                - in: query
+                  name: filter
+                  schema:
+                      type: string
+                - in: query
+                  name: page
+                  schema:
+                      type: integer
+                - in: query
+                  name: pageSize
+                  schema:
+                      type: integer
+                - in: query
+                  name: search
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description: The data returned
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/AnimalGroup"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/AnimalGroup"
+                                type: array
+        post:
+            tags: ["AnimalGroup"]
+            description: Create new Animal Group
+            operationId: postAnimalGroup
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/AnimalGroup"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/AnimalGroup"
+            responses:
+                201:
+                    description:
+                        "Create an Animal Group"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+    "/groups/{animalGroupId}":
+        put:
+            tags: ["AnimalGroup"]
+            description: Update an Animal Group
+            operationId: putAnimalGroup
+            parameters:
+                - in: path
+                  name: animalGroupId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/AnimalGroup"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/AnimalGroup"
+            responses:
+                200:
+                    description:
+                        "Update an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+        get:
+            tags: ["AnimalGroup"]
+            description: Get an Animal Group by animalGroupId
+            operationId: getAnimalGroup
+            parameters:
+                - in: path
+                  name: animalGroupId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                200:
+                    description:
+                        "Get an Animal Group"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+        delete:
+            tags: ["AnimalGroup"]
+            description: delete an Animal Group
+            operationId: deleteAnimalGroup
+            parameters:
+                - in: path
+                  name: animalGroupId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                204:
+                    description:
+                        "Delete an Animal Group"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+    "/groups/by-external-reference-code/{externalReferenceCode}":
+        put:
+            tags: ["AnimalGroup"]
+            description: Update an Animal Group by extRefCode
+            operationId: putAnimalGroupByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/AnimalGroup"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/AnimalGroup"
+            responses:
+                200:
+                    description:
+                        "Update an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+        get:
+            tags: ["AnimalGroup"]
+            description: Get an Animal Group by extRefCode
+            operationId: getAnimalGroupByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description:
+                        "Get an Animal Group"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalGroup"
+        delete:
+            tags: ["AnimalGroup"]
+            description: delete an Animal Tag by externalReferenceCode
+            operationId: deleteAnimalGroupByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                204:
+                    description:
+                        "Delete an Animal Group"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+
+    "/tags":
+        get:
+            tags: ["AnimalTag"]
+            description:
+                Retrieves the animal tags. Results can be paginated, filtered, searched, and sorted.
+            operationId: getAnimalTagsPage
+            parameters:
+                - in: query
+                  name: filter
+                  schema:
+                      type: string
+                - in: query
+                  name: page
+                  schema:
+                      type: integer
+                - in: query
+                  name: pageSize
+                  schema:
+                      type: integer
+                - in: query
+                  name: search
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description: The data returned
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/AnimalTag"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/AnimalTag"
+                                type: array
+        post:
+            tags: ["AnimalTag"]
+            description: Create new Animal Tag
+            operationId: postAnimalTag
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTag"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTag"
+            responses:
+                201:
+                    description:
+                        "Create an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+    "/tags/{animalTagId}":
+        put:
+            tags: ["AnimalTag"]
+            description: Update an Animal Tag
+            operationId: putAnimalTag
+            parameters:
+                - in: path
+                  name: animalTagId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTag"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTag"
+            responses:
+                200:
+                    description:
+                        "Update an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+        get:
+            tags: ["AnimalTag"]
+            description: Get an Animal Tag by Animal Tag Id
+            operationId: getAnimalTag
+            parameters:
+                - in: path
+                  name: animalTagId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                200:
+                    description:
+                        "Get an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+        delete:
+            tags: ["AnimalTag"]
+            description: delete an Animal Tag
+            operationId: deleteAnimalTag
+            parameters:
+                - in: path
+                  name: animalTagId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                204:
+                    description:
+                        "Delete an Animal Tag"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+    "/tags/by-external-reference-code/{externalReferenceCode}":
+        put:
+            tags: ["AnimalTag"]
+            description: Update an Animal Tag by External Reference Code
+            operationId: putAnimalTagByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTag"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTag"
+            responses:
+                200:
+                    description:
+                        "Update an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+        get:
+            tags: ["AnimalTag"]
+            description: Get an Animal Tag by External Reference Code
+            operationId: getAnimalTagByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description:
+                        "Get an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTag"
+        delete:
+            tags: ["AnimalTag"]
+            description: Delete an Animal Tag by External Reference Code
+            operationId: deleteAnimalTagByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                204:
+                    description:
+                        "Delete an Animal Tag"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+    "/tags/by-external-reference-code/{externalReferenceCode}/approval":
+        put:
+            tags: ["AnimalTag"]
+            description: Update an Animal Tag by External Reference Code
+            operationId: putAnimalTagApprovedByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTagApproved"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTagApproved"
+            responses:
+                200:
+                    description:
+                        "Approval an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTagApproved"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTagApproved"
+    "/tags/{animalTagId}/approval":
+        put:
+            tags: ["AnimalTag"]
+            description: Update an Animal Tag
+            operationId: approvalAnimalTag
+            parameters:
+                - in: path
+                  name: animalTagId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTagApproved"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/AnimalTagApproved"
+            responses:
+                200:
+                    description:
+                        "Approval an Animal Tag"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTagApproved"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalTagApproved"
+
+    "/dogs":
+        get:
+            tags: ["Dog"]
+            description:
+                Retrieves the dog. Results can be paginated, filtered, searched, and sorted.
+            operationId: getDogsPage
+            parameters:
+                - in: query
+                  name: filter
+                  schema:
+                      type: string
+                - in: query
+                  name: page
+                  schema:
+                      type: integer
+                - in: query
+                  name: pageSize
+                  schema:
+                      type: integer
+                - in: query
+                  name: search
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description: The data returned
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Dog"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Dog"
+                                type: array
+        post:
+            tags: ["Dog"]
+            description: Create new a Dog
+            operationId: postDog
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Dog"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Dog"
+            responses:
+                201:
+                    description:
+                        "Create a Dog"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+    "/dogs/{dogId}":
+        put:
+            tags: ["Dog"]
+            description: Update a Dog
+            operationId: putDog
+            parameters:
+                - in: path
+                  name: dogId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Dog"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Dog"
+            responses:
+                200:
+                    description:
+                        "Update a Dog"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+        get:
+            tags: ["Dog"]
+            description: Get detail a Dog
+            operationId: getDog
+            parameters:
+                - in: path
+                  name: dogId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                200:
+                    description:
+                        "Get detail a Dog"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+        delete:
+            tags: ["Dog"]
+            description: Delete a Dog
+            operationId: deleteDog
+            parameters:
+                - in: path
+                  name: dogId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                204:
+                    description:
+                        "Delete a Dog"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+
+    "/dogs/{dogApprovalId}/approval":
+        put:
+            tags: ["Dog"]
+            description: Approval a Dog
+            operationId: putDogApproval
+            parameters:
+                - in: path
+                  name: dogApprovalId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/DogApproval"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/DogApproval"
+            responses:
+                200:
+                    description:
+                        "Update a Dog"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/DogApproval"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/DogApproval"
+
+    "/dogs/by-external-reference-code/{externalReferenceCode}":
+        put:
+            tags: ["Dog"]
+            description: Update a Dog by externalReferenceCode
+            operationId: putDogByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Dog"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Dog"
+            responses:
+                200:
+                    description:
+                        "Update a Dog"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+        get:
+            tags: ["Dog"]
+            description: Get a Dog by externalReferenceCode
+            operationId: getDogByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description:
+                        "Get a Dog"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Dog"
+        delete:
+            tags: ["Dog"]
+            description: Delete a Dog by externalReferenceCode
+            operationId: deleteDogByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                204:
+                    description:
+                        "Delete a Dog"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+    "/dogs/by-external-reference-code/{externalReferenceCode}/approval":
+        put:
+            tags: ["Dog"]
+            description: Approval a Dog by externalReferenceCode
+            operationId: putDogApprovalByExternalReferenceCode
+            parameters:
+                - in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/DogApproval"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/DogApproval"
+            responses:
+                200:
+                    description:
+                        "Update a Dog"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/DogApproval"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/DogApproval"
+
+

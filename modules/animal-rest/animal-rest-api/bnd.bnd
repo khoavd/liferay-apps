@@ -1,0 +1,6 @@
+Bundle-Name: animal-rest-api
+Bundle-SymbolicName: com.dogoo.sample.animal.rest.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.dogoo.sample.animal.rest.dto.v1_0,\
+	com.dogoo.sample.animal.rest.resource.v1_0

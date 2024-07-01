@@ -1,0 +1,62 @@
+components:
+    schemas:
+        AnimalCategory:
+            description: Animal Category model
+            properties:
+                id:
+                    format: int64
+                    readOnly: true
+                    type: integer
+                name:
+                    type: string
+info:
+    description: "AnimalRest REST API"
+    license:
+        name: "Apache 2.0"
+        url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    title: "AnimalRest"
+    version: v1.0
+openapi: 3.0.1
+
+paths:
+    "/category/{cateId}":
+        get:
+            tags: ["AnimalCategory"]
+            description: Get a category
+            operationId: getPet
+            parameters:
+                - in: path
+                  name: cateId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                200:
+                    description:
+                        "Get detail category"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnimalCategory"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/AnimalCategory"
+        delete:
+            tags: ["AnimalCategory"]
+            description: Delete a category
+            operationId: deleteAnimalCategory
+            parameters:
+                - in: path
+                  name: cateId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                204:
+                    description:
+                        "Delete a Category"
+                    content:
+                        application/json: {}
+                        application/xml: {}

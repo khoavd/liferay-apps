@@ -1,0 +1,10 @@
+Bundle-Name: upgradeservice-cat-api
+Bundle-SymbolicName: com.dogoo.poc.upgradeservice.cat.service.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.dogoo.poc.upgradeservice.cat.service.exception,\
+	com.dogoo.poc.upgradeservice.cat.service.model,\
+	com.dogoo.poc.upgradeservice.cat.service.service,\
+	com.dogoo.poc.upgradeservice.cat.service.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../upgradeservice-cat-service/service.xml

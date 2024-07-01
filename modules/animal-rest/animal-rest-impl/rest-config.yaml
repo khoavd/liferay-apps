@@ -1,0 +1,10 @@
+apiDir: "../animal-rest-api/src/main/java"
+apiPackagePath: "com.dogoo.sample.animal.rest"
+application:
+    baseURI: "/animal-rest"
+    className: "AnimalRestApplication"
+    name: "AnimalRest"
+author: "khoavu"
+generateGraphQL: false
+#clientDir: "../animal-rest-client/src/main/java"
+#testDir: "../animal-rest-test/src/testIntegration/java"

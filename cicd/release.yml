@@ -1,0 +1,7 @@
+config:
+  namespace: env-release
+  podName: liferay
+  tarFile: deploy.tar.gz
+  deployDir: /opt/liferay/deploy
+  deployTempDir: /mnt/liferay/deploy_temp
+  timesleep: 10

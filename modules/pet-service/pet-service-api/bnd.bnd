@@ -1,0 +1,12 @@
+Bundle-Name: pet-service-api
+Bundle-SymbolicName: com.dogoo.sample.pet.service.api
+Bundle-Version: 1.0.0
+Export-Package:\
+    com.dogoo.sample.pet.service.constant,\
+	com.dogoo.sample.pet.service.exception,\
+	com.dogoo.sample.pet.service.model,\
+	com.dogoo.sample.pet.service.mapper.model,\
+	com.dogoo.sample.pet.service.service,\
+	com.dogoo.sample.pet.service.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../pet-service-service/service.xml

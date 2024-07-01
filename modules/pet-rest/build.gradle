@@ -1,0 +1,19 @@
+def versionPath = org.gradle.internal.os.OperatingSystem.current().isWindows() ?
+        projectDir.toString() + "\\VERSION" :
+        projectDir.toString() + "/VERSION"
+
+subprojects {
+    configurations.all {
+        resolutionStrategy.force 'com.liferay:com.liferay.portal.vulcan.api:9.2.1'
+    }
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                group = 'com.dogoo.sample.pet.rest'
+                version = (new File(versionPath).exists() && new File(versionPath).text != "")  ? new File(versionPath).text : rootProject.ext.version
+            }
+        }
+    }
+}
+artifactoryPublish.skip = true

@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:animal-service:animal-service-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../animal-service-api/src/main/java"
+}
+
+group = "com.dogoo.sample.animal.service"
